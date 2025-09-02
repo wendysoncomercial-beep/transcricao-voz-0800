@@ -1,0 +1,11 @@
+[server]
+enableXsrfProtection = true
+maxUploadSize = 1024  # MB
+port = 8501
+
+[theme]
+base="light"
+primaryColor="#4E46E5"
+backgroundColor="#ffffff"
+secondaryBackgroundColor="#F7F7FB"
+textColor="#111827"
