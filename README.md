@@ -1,36 +1,38 @@
-# 🎧 Faster-Whisper Transcriber (Streamlit)
+# Transcrição 0800 (Streamlit + faster-whisper)
 
-Transcrição rápida de áudios `.wav` usando **faster-whisper**, com separação de canais estéreo (Agente/Cliente),
-normalização opcional e exportação em **.txt**, **.srt** e **.vtt** — tudo com interface **Streamlit**.
+App simples para transcrever WAV estéreo (Agente L / Cliente R) gerando `.txt`, `.srt` e `.vtt`.
 
-## 🧰 Como usar localmente
+## Deploy no Streamlit Cloud
 
+Inclua estes arquivos na raiz do repositório:
+
+- `app.py`
+- `transcriber.py`
+- `requirements.txt`
+- `packages.txt`  ← instala deps do PyAV/FFmpeg
+- `runtime.txt`   ← fixa Python 3.10
+- `.gitignore`
+
+### `packages.txt`
+```
+ffmpeg
+pkg-config
+libavcodec-dev
+libavdevice-dev
+libavfilter-dev
+libavformat-dev
+libswresample-dev
+libswscale-dev
+```
+
+### `runtime.txt`
+```
+3.10
+```
+
+## Uso local
 ```bash
-git clone https://github.com/<SEU_USUARIO>/faster-whisper-streamlit.git
-cd faster-whisper-streamlit
-python -m venv .venv
-source .venv/bin/activate  # (Windows: .venv\Scripts\activate)
+python -m venv .venv && source .venv/bin/activate
 pip install -r requirements.txt
 streamlit run app.py
 ```
-
-> ✅ **Sem ffmpeg instalado?** O pacote `imageio-ffmpeg` baixa um binário compatível automaticamente.
-> O app adiciona o binário ao `PATH` em tempo de execução.
-
-## 🚀 Deploy no Streamlit Community Cloud
-
-1. Suba estes arquivos no seu GitHub (repo público ou privado).
-2. Em **streamlit.io → Deploy app**, aponte para `app.py`.
-3. Sem necessidade de `Procfile`. O `requirements.txt` já contempla as dependências.
-
-## 🧪 Dicas de performance
-
-- Modelos menores (ex.: `small`, `medium`) transcrevem mais rápido.
-- Em máquinas com GPU CUDA, o app detecta automaticamente e usa `float16`.
-- Ative VAD para reduzir trechos de silêncio.
-
-## 📄 Saídas geradas
-
-Para cada arquivo:
-- `NOME.txt` → linhas legíveis, com timestamp relativo e (opcional) horário real.
-- `NOME.srt` e `NOME.vtt` → legendas com rótulo de falante.

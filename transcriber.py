@@ -1,4 +1,4 @@
-from __future__ import annotations 
+from __future__ import annotations
 import os
 from pathlib import Path
 from datetime import datetime, timedelta
@@ -6,7 +6,6 @@ from typing import Iterable, Optional, Tuple, List
 import ffmpeg  # ffmpeg-python
 from faster_whisper import WhisperModel
 import imageio_ffmpeg
-import platform
 
 # Garantir ffmpeg no PATH via imageio-ffmpeg
 def _ensure_ffmpeg_on_path():
